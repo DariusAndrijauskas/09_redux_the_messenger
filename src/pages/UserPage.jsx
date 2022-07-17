@@ -15,6 +15,10 @@ function UserPage() {
     const currentUser = useSelector(state=>state.users.value.currentUser);
     const isLoggedIn = useSelector(state=>state.users.value.isLoggedIn);
     const user = users.filter(x=>x.username===username)[0];
+    function handleSend(){
+        if (currentUser.blackList.includes(user.id)) alert(`you cannot send messages to ${user.username}, because this user is blocked.`)
+        else if (message.current.value) sendMessage();
+    }
     function sendMessage(){
         let newConversations = [...conversations];
         if (conversations.filter(x=>x.participants.includes(currentUser.id) && x.participants.includes(user.id)).length) {
@@ -75,7 +79,7 @@ function UserPage() {
                     <h2>username: {user.username}</h2>
                     <h2>{user.email}</h2>
                     <textarea ref={message} placeholder={`your message to ${user.username}`}></textarea>
-                    <button onClick={sendMessage}>message {user.username}</button>
+                    <button onClick={handleSend}>message {user.username}</button>
                 </div>
                 </> : 'No peaking! please login ;)'}
         </div>
