@@ -7,6 +7,7 @@ import { setCurrentUser, setIsLoggedIn, setUsers } from '../features/users';
 const MessengerPage = () => {
     const dispatch = useDispatch();
     const newMessage = useRef();
+    const isLoggedIn = useSelector(state=>state.users.value.isLoggedIn);
     const users = useSelector(state=>state.users.value.users);
     const currentUser = useSelector(state=>state.users.value.currentUser);
     const conversations = useSelector(state=>state.conversations.value.conversations);
@@ -65,6 +66,7 @@ const MessengerPage = () => {
 
     return (
         <div className='MessengerPage' >
+            {isLoggedIn ? <>
             <div className='left'>
                 {conversations.filter(conversation=>conversation.participants.includes(currentUser.id)).map((conversation, i)=>{
                     const userId = conversation.participants.filter(x=>x!==currentUser.id)[0];
@@ -99,6 +101,7 @@ const MessengerPage = () => {
                     <button onClick={handleSend}>➡️</button>
                 </div>
             </div>
+            </> : 'No peaking! please login ;)'}
         </div>
 )};
 
