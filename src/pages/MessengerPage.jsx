@@ -52,14 +52,13 @@ const MessengerPage = () => {
     function blockUser(userId){
         let newUsers = users.map(user=>{
             if (user.id===currentUser.id && !user.blackList.includes(userId)) {
-                sendMessage(`*you have been blocked by ${currentUser.username}*`)  
+                sendMessage(`*you have been blocked by ${currentUser.username}*`);  
                 user = {...user, blackList:[...user.blackList, userId]}
             }
             if (user.id===userId && !user.blackList.includes(currentUser.id)) 
             user = {...user, blackList:[...user.blackList, currentUser.id]};
             return user;
         });
-        console.log(newUsers);
         dispatch(setCurrentUser(newUsers.filter(x=>x.id===currentUser.id)[0]));
         dispatch(setUsers(newUsers));
     }
