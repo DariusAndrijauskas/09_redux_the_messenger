@@ -66,7 +66,7 @@ const RegisterPage = () => {
                 <label htmlFor="admin" >admin</label>
             </div>
             <button onClick={register}>Register</button>
-            {getError && <h1>{getError}</h1>}
+            {getError && <h2>{getError}</h2>}
         </div>
     );
 };

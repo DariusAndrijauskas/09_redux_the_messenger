@@ -22,8 +22,8 @@ const LoginPage = () => {
     };
     return (
         <div className='LoginPage'>
-            <input ref={email} type="text" placeholder='email' defaultValue={'jonas@gmail.com'}></input>
-            <input ref={password} type="text" placeholder="password" defaultValue={'jonas'}></input>
+            <input ref={email} type="text" placeholder='email' ></input>
+            <input ref={password} type="password" placeholder="password" ></input>
             <button onClick={login}>Login</button>
             {getError && <h2>{getError}</h2>}
         </div>
