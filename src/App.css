@@ -1,38 +1,318 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 .App {
-  text-align: center;
+    width: 700px;
+    margin: 0 auto;
+}
+.NavBar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+.NavBar h1 {
+    transition: 1s;
+    cursor: pointer;
+    position: relative;
+}
+.NavBar h1:hover {
+    text-shadow: hsla(0, 0%, 0%, 0.696) -10px 15px 15px;
+    /* text-shadow:  */
+    /* rgb(255, 0, 242) 15px 10px 15px, hsl(60, 100%, 50%)  0px -10px 15px,rgb(0, 238, 255) -15px 10px 15px; */
+    transition: 0.2s;
+    transform: scale(1.1);
+}
+.NavBar h1 .counter {
+    font-family: 'JerBrain Mono';
+    color:white;
+    background-color: red;
+    padding: 0px 7px;
+    border-radius: 999px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) -5px 5px 10px 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.LoginPage, .RegisterPage {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.LoginPage input, .RegisterPage>input, .LoginPage button, .RegisterPage button, .ProfilePage input, .ProfilePage button, .UserPage button, .RegisterPage .radio {
+    padding: 5px 10px;
+    font-size: 20px;
+    width: 250px;
+    transition: 0.2s;
+    text-align: center;
+}
+.LoginPage button:hover, .RegisterPage button:hover, .ProfilePage button:hover, .UserPage button:hover {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 15px 0px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.RegisterPage .radio {
+    text-align: left;
+}
+.RegisterPage .radio fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+.RegisterPage .radio input {
+    margin-right: 5px;
+    cursor: pointer;
+}
+.RegisterPage .radio label {
+    cursor: pointer;
+}
+.RegisterPage .radio label:first-of-type {
+    margin-right: 48px;
+}
+.ProfilePage {
+    padding: 20px;
+    display:flex;
+    gap: 20px;
+}
+.ProfilePage .image, .UserPage .image {
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    /* background-position: center; */
+    border-radius: 15px;
+}
+.ProfilePage .info, .UserPage .info {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+.AllUsersPage {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 15px;
+    padding: 17px 15px;
+    background-color: hsl(0, 0%, 90%);
+    border-radius: 20px;
+    box-shadow: inset -5px 5px 10px 0px rgba(0, 0, 0, 0.2);
+    z-index: 0;
+}
+.AllUsersPage .userCard {
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: -5px 5px 10px 0px rgba(0, 0, 0, 0.2);
+    transition: 1s;
+    cursor: pointer;
+}
+.AllUsersPage .userCard:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+    z-index: 1000;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.AllUsersPage .userCard .image {
+    height: 200px;
+    width: calc((700px - 4 * 15px - 6 * 10px) / 3);
+    background-size: cover;
+    /* background-position: center; */
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+.UserPage {
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    /* justify-content: space-between; */
+}
+.UserPage .left {
+    display: flex;
+    flex-flow: column nowrap;
+
+}
+.UserPage textarea {
+    width: 250px;
+    height: 100px;
+    font-size: 18px;
+    padding: 5px;
+}
+.UserPage .delete {
+    margin: 37px;
+    width:initial;
+    height: 40px;
+    align-self: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.MessengerPage {
+    height: calc(100vh - 83px - 20px);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 17px 15px;
+    background-color: hsl(0, 0%, 90%);
+    border-radius: 20px;
+    box-shadow: inset -5px 5px 10px 0px rgba(0, 0, 0, 0.2);
+    z-index: 0;
+}
+.MessengerPage .left {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 15px;
+    width: 200px;
+    height: 100%;
+}
+.MessengerPage .left .conversationCard {
+    width: 100%;
+    height: 70px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: -5px 5px 10px 0px rgba(0, 0, 0, 0.2);
+    transition: 1s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+.MessengerPage .left .conversationCard:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+    z-index: 1000;
+}
+.MessengerPage .left .conversationCard .image {
+    height: 50px;
+    width: 50px;
+    border-radius: 15px;
+    background-size: cover;
+}
+.MessengerPage .left .conversationCard button {
+    position: absolute;
+    border-radius:999px;
+    /* margin-right:-6px; */
+    background-color: transparent;
+    border: none;
+    padding-bottom:2px;
+    font-size: 16px;
+    cursor: pointer;
+    filter: grayscale();
+    transition: 1s;
+}
+.MessengerPage .left .conversationCard button.delete {
+    top:5px;
+    right:5px;
+}
+.MessengerPage .left .conversationCard button.block {
+    bottom:5px;
+    right:5px;
+}
+.MessengerPage .left .conversationCard button:hover {
+    transition: 0.2s;
+    filter:none;
+    transform: scale(2) rotate(360deg);
+
+}
+.MessengerPage .right {
+    border-radius: 15px 15px 15px 25px;
+    background-color: white;
+    box-shadow: -5px 5px 10px 0px rgba(0, 0, 0, 0.2);
+    width: 455px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 15px 15px 11px 15px;
+    
+}
+.MessengerPage .chatHistory {
+    padding: 10px;
+    border-radius: 10px 10px 15px 15px ;
+    width: 100%;
+    height: calc(100% - 26px - 42px - 10px);
+    flex: auto;
+    background-color: hsl(0, 0%, 90%);
+    font-family: 'JetBrain Mono';
+    color: hsla(0, 0%, 0%, 0.7);
+    text-shadow: -5px 5px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: inset -5px 5px 10px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 10px;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    overflow: hidden;
+
+}
+.MessengerPage .right .chatHistory .message {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    /* flex-direction: row-reverse; */
+    /* background-color: blueviolet; */
+
+}
+.MessengerPage .right .chatHistory .message .image {
+    width:40px;
+    height:40px;
+    background-size: cover;
+    border-radius:999px;
+    box-shadow: -5px 5px 10px 0px rgba(0, 0, 0, 0.2), 0px 0px 1px 3px rgb(255, 255, 255);
+    /* border: 2px solid hsla(0, 0%, 100%, 0.5);
+    border: 1px solid hsl(0, 0%, 100%) */
+}
+.MessengerPage .right .chatHistory p {
+    width: 355px;
+}
+.MessengerPage .bottomInputs {
+    /* border-radius: 15px; */
+    /* width: 100%; */
+    /* height: 50px; */
+    /* background-color: blueviolet; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    /* padding: 10px; */
+}
+.MessengerPage .bottomInputs input {
+    border-radius: 999px;
+    width: 100%;
+    padding:5px 8px;
+    font-size: 16px;
+    /* border: 1px solid gray; */
+    border: none;
+    background-color: hsl(0, 0%, 90%);
+    /* box-shadow: inset -2px 2px 10px 0px rgba(0, 0, 0, 0.3); */
+    font-family: 'JetBrain Mono';
+    color: hsla(0, 0%, 0%, 0.6);
+    box-shadow: inset -5px 5px 6px 0px rgba(0, 0, 0, 0.2);
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.MessengerPage .bottomInputs input:focus {
+    outline: none;
+    
 }
 
-.App-link {
-  color: #61dafb;
+.MessengerPage .bottomInputs button {
+    border-radius:999px;
+    margin-right:-6px;
+    background-color: white;
+    border: none;
+    padding-bottom:2px;
+    font-size: 30px;
+    cursor: pointer;
+    filter: grayscale();
+    transition: 1s;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.MessengerPage .bottomInputs button:hover {
+    transition: 0.2s;
+    filter: none;
+    transform: rotate(-450deg) scale(1.2);
 }
